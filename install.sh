@@ -34,3 +34,5 @@ for Module in $( ls PHPModules/* )
 do
 	echo "extension=$Module" >> php.ini
 done
+echo 'run = "php -c php.ini -S 0.0.0.0:8000 -t folder/"' > .replit
+rm -R Work
