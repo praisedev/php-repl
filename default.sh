@@ -26,7 +26,7 @@ do
 	dpkg -x $Module .
 done
 mkdir ../PHPModules/ # Made for PHP libraries
-cp usr/lib/php/*/* ../PHPModules/
+cp -r usr/lib/php/*/* ../PHPModules/
 cd ../ # Changing work dir
 mv PHPModules/mysqlnd.so PHPModules/A-mysqlnd.so # Only for change sequence (mysqlnd.so should be loaded before mysqli.so)
 echo 'extension=pdo.so' > php.ini
@@ -34,5 +34,5 @@ for Module in $( ls PHPModules/* )
 do
 	echo "extension=$Module" >> php.ini
 done
-echo 'run = "php -c php.ini -S 0.0.0.0:8000 -t folder/"' > .replit
+echo 'run = "php -c php.ini -S 0.0.0.0:8000 -t folder.replit/"' > .replit
 rm -R Work
